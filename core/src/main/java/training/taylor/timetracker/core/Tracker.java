@@ -29,11 +29,11 @@ public class Tracker {
     public TimeEntry get(int index) {
         try {
 
-        } catch (Exception e) {
+        } catch (Exception e) {fdfdfdfdf
 
         }
 
-        boolean valid = false;
+        boolean valid = false;dsfdfsdf
 
         if (valid = true) {
             // whatever
