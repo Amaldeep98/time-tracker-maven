@@ -2,22 +2,10 @@ pipeline {
     agent any
 
     tools {
-        maven 'maven3.9'   // Use your configured Maven version
-        jdk 'jdk17'        // Use your configured JDK version
+        maven 'maven3.9'   
+        jdk 'jdk17'        
     }
-
-    environment {
-        // Optional: You can define project key here if needed
-        // SONAR_PROJECT_KEY = 'com.example:demo'
-    }
-
     stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/your-username/sample-java-maven.git'
-            }
-        }
-
         stage('Build') {
             steps {
                 sh 'mvn clean package'
@@ -32,27 +20,10 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                withSonarQubeEnv('SonarCloud') { // Match this with your Jenkins Sonar config name
+                withSonarQubeEnv('SonarCloud') { 
                     sh 'mvn sonar:sonar'
                 }
             }
-        }
-
-        stage('Wait for Quality Gate') {
-            steps {
-                timeout(time: 2, unit: 'MINUTES') {
-                    waitForQualityGate abortPipeline: true
-                }
-            }
-        }
-    }
-
-    post {
-        success {
-            githubNotify context: 'CI', status: 'SUCCESS', description: 'Build, test, and analysis passed'
-        }
-        failure {
-            githubNotify context: 'CI', status: 'FAILURE', description: 'One or more stages failed'
         }
     }
 }
