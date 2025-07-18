@@ -42,8 +42,8 @@ public class TimeEntry {
         return "TimeEntry{" +
                 "description='" + description + '\'' +
                 ", rate=" + rate +
-                ", time=" + time +fsfdfd
-                '}';
+                ", time=" + time +
+                '}'
     }
 }
 //test
