@@ -40,6 +40,6 @@ public class Tracker {
             // whatever
         }
 
-        return entries.get(index);poop
+        return entries.get(index);
     }
 }
